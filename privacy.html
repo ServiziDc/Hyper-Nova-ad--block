@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informativa sulla privacy – HyperNova Ad Blocker</title>
+<meta name="description" content="Informativa sulla privacy dell'estensione HyperNova Ad Blocker per Google Chrome: nessun dato personale raccolto, tutto funziona in locale.">
+<link rel="icon" href="assets/favicon.png">
+<style>
+  :root { --bg: #070b18; --bg2: #0d1428; --panel: #111a33; --line: #22305a; --text: #e8edf8; --muted: #9aa6c6; --a1: #8b5cf6; --a2: #22d3ee; --ok: #10b981; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.7 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overflow-x: hidden; }
+  a { color: var(--a2); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  .grad { background: linear-gradient(90deg, #c4b5fd, var(--a2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  nav { position: sticky; top: 0; z-index: 10; background: rgba(7,11,24,.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(34,48,90,.6); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 12px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--text); text-decoration: none; white-space: nowrap; }
+  .logo img { width: 34px; height: 34px; }
+  .right { display: flex; align-items: center; gap: 16px; }
+  .right a { color: var(--muted); text-decoration: none; font-size: 15px; }
+  .lang { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+  .lang button { background: none; border: 0; color: var(--muted); padding: 5px 11px; font: 600 13px system-ui, sans-serif; cursor: pointer; }
+  .lang button.on { background: linear-gradient(90deg, var(--a1), var(--a2)); color: #fff; }
+
+  header { padding: 60px 0 30px; background: radial-gradient(ellipse at 15% 0%, rgba(139,92,246,.35), transparent 55%), radial-gradient(ellipse at 90% 20%, rgba(34,211,238,.15), transparent 50%); }
+  header .wrap:first-child { display: flex; align-items: center; gap: 30px; }
+  header img { width: 120px; filter: drop-shadow(0 20px 50px rgba(139,92,246,.5)); flex: none; }
+  h1 { font-size: clamp(32px, 5vw, 50px); line-height: 1.1; margin: 0 0 10px; letter-spacing: -.5px; }
+  .upd { color: var(--muted); font-size: 15px; margin: 0; }
+
+  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 30px 0 10px; }
+  .summary > div { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+  .summary .i { font-size: 26px; }
+  .summary b { display: block; margin: 6px 0 2px; }
+  .summary span { color: var(--muted); font-size: 14px; line-height: 1.45; display: block; }
+
+  .layout { display: grid; grid-template-columns: 250px 1fr; gap: 40px; padding-top: 40px; padding-bottom: 70px; }
+  .layout > * { min-width: 0; }
+  article p code { white-space: normal; word-break: break-all; }
+  .toc { position: sticky; top: 84px; align-self: start; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; }
+  .toc b { display: block; font-size: 13px; letter-spacing: .8px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .toc ol { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.9; }
+  .toc a { color: var(--text); text-decoration: none; }
+  .toc a:hover { color: var(--a2); }
+
+  article section { background: linear-gradient(180deg, var(--panel), var(--bg2)); border: 1px solid var(--line); border-radius: 18px; padding: 24px 26px; margin-bottom: 18px; scroll-margin-top: 84px; }
+  article h2 { margin: 0 0 10px; font-size: 22px; }
+  article p, article li { color: #c9d2e8; }
+  article p { margin: 0 0 10px; }
+  article ul { margin: 0; padding-left: 20px; }
+  .tbl { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 520px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .6px; }
+  code { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: 13.5px; color: var(--text); white-space: nowrap; }
+  .yes { color: var(--ok); font-weight: 700; }
+  .callout { border-left: 3px solid var(--ok); background: rgba(16,185,129,.08); padding: 12px 16px; border-radius: 0 12px 12px 0; margin-top: 12px; }
+
+  footer { border-top: 1px solid var(--line); padding: 30px 0; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  html:not([lang="en"]) [data-l="en"] { display: none !important; }
+  html[lang="en"] [data-l="it"] { display: none !important; }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .toc { position: static; }
+    .summary { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    header .wrap:first-child { flex-direction: column; text-align: center; }
+    header img { width: 90px; }
+    .summary { grid-template-columns: 1fr; }
+    article section { padding: 20px 18px; }
+    .logo span, .right a { display: none; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="assets/logo.png" alt=""><span>HyperNova Ad Blocker</span></a>
+    <div class="right">
+      <a href="index.html"><span data-l="it">← Torna al sito</span><span data-l="en">← Back to site</span></a>
+      <div class="lang"><button data-lang="it" class="on">IT</button><button data-lang="en">EN</button></div>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <img src="assets/logo.png" alt="">
+    <div>
+      <h1><span data-l="it">Informativa sulla <span class="grad">privacy</span></span><span data-l="en">Privacy <span class="grad">Policy</span></span></h1>
+      <p class="upd"><span data-l="it">HyperNova Ad Blocker · Ultimo aggiornamento: 26 settembre 2026</span><span data-l="en">HyperNova Ad Blocker · Last updated: September 26, 2026</span></p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="summary">
+      <div><div class="i">🔒</div><b data-l="it">Zero dati raccolti</b><b data-l="en">Zero data collected</b><span data-l="it">Non raccogliamo, non vendiamo e non condividiamo dati personali.</span><span data-l="en">We don't collect, sell or share personal data.</span></div>
+      <div><div class="i">💻</div><b data-l="it">Tutto in locale</b><b data-l="en">Everything local</b><span data-l="it">Il blocco avviene sul tuo computer, dentro il browser.</span><span data-l="en">Blocking happens on your computer, inside the browser.</span></div>
+      <div><div class="i">🚫</div><b data-l="it">Nessun tracciamento</b><b data-l="en">No tracking</b><span data-l="it">Niente statistiche, analytics, cookie o pubblicità.</span><span data-l="en">No statistics, analytics, cookies or ads.</span></div>
+      <div><div class="i">🗑️</div><b data-l="it">Cancellazione totale</b><b data-l="en">Full deletion</b><span data-l="it">Disinstallando l'estensione sparisce tutto.</span><span data-l="en">Uninstalling the extension removes everything.</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <aside class="toc">
+    <b data-l="it">Indice</b><b data-l="en">Contents</b>
+    <ol data-l="it">
+      <li><a href="#s1">Titolare</a></li><li><a href="#s2">Dati trattati</a></li><li><a href="#s3">Permessi</a></li>
+      <li><a href="#s4">Connessioni di rete</a></li><li><a href="#s5">Terze parti</a></li><li><a href="#s6">Conservazione</a></li>
+      <li><a href="#s7">I tuoi diritti</a></li><li><a href="#s8">Minori</a></li><li><a href="#s9">Modifiche</a></li><li><a href="#s10">Contatti</a></li>
+    </ol>
+    <ol data-l="en">
+      <li><a href="#s1">Controller</a></li><li><a href="#s2">Data processed</a></li><li><a href="#s3">Permissions</a></li>
+      <li><a href="#s4">Network connections</a></li><li><a href="#s5">Third parties</a></li><li><a href="#s6">Retention</a></li>
+      <li><a href="#s7">Your rights</a></li><li><a href="#s8">Children</a></li><li><a href="#s9">Changes</a></li><li><a href="#s10">Contact</a></li>
+    </ol>
+  </aside>
+
+  <article>
+    <section id="s1">
+      <h2><span data-l="it">1. Titolare</span><span data-l="en">1. Controller</span></h2>
+      <p data-l="it">L'estensione HyperNova Ad Blocker ("l'Estensione") è sviluppata e pubblicata da <b>Doctor Computer &amp; Software</b>, Italia – <a href="https://assistenza-consulenza-informatica.eu">assistenza-consulenza-informatica.eu</a>. Questa informativa è redatta ai sensi del Regolamento UE 2016/679 (GDPR) e delle norme del Chrome Web Store.</p>
+      <p data-l="en">The HyperNova Ad Blocker extension ("the Extension") is developed and published by <b>Doctor Computer &amp; Software</b>, Italy – <a href="https://assistenza-consulenza-informatica.eu">assistenza-consulenza-informatica.eu</a>. This policy follows EU Regulation 2016/679 (GDPR) and the Chrome Web Store policies.</p>
+    </section>
+
+    <section id="s2">
+      <h2><span data-l="it">2. Dati trattati</span><span data-l="en">2. Data processed</span></h2>
+      <p data-l="it">L'Estensione <b>non raccoglie dati personali</b> e non li invia a noi o a nessun altro. Per funzionare elabora alcune informazioni <b>solo in locale</b>, nel tuo browser:</p>
+      <p data-l="en">The Extension <b>does not collect personal data</b> and does not send any data to us or anyone else. To work, it processes some information <b>locally only</b>, inside your browser:</p>
+      <ul data-l="it">
+        <li><b>Impostazioni</b> – moduli attivi, lingua, siti esclusi, preferenza sui download. Salvate nella memoria locale del browser.</li>
+        <li><b>Statistiche</b> – solo contatori numerici (es. "37 minacce bloccate"), senza indirizzi né date di visita.</li>
+        <li><b>Indirizzi delle pagine e delle richieste</b> – confrontati al momento con le liste filtri per bloccare pubblicità, tracker e siti pericolosi. Non vengono registrati.</li>
+        <li><b>Webmail</b> – nelle pagine della posta vengono letti i link e i nomi degli allegati visibili solo per segnalare quelli pericolosi. Il contenuto delle email non viene salvato né inviato.</li>
+        <li><b>Download</b> – nome del file e indirizzo di provenienza vengono controllati per fermare file pericolosi.</li>
+      </ul>
+      <ul data-l="en">
+        <li><b>Settings</b> – enabled modules, language, excluded sites, download preference. Stored in the browser's local storage.</li>
+        <li><b>Statistics</b> – numeric counters only (e.g. "37 threats blocked"), with no addresses or visit dates.</li>
+        <li><b>Page and request URLs</b> – checked on the fly against filter lists to block ads, trackers and dangerous sites. They are not logged.</li>
+        <li><b>Webmail</b> – visible links and attachment names are read only to flag dangerous ones. Email content is neither stored nor transmitted.</li>
+        <li><b>Downloads</b> – file name and source address are checked to stop dangerous files.</li>
+      </ul>
+      <p class="callout" data-l="it">Base giuridica: il trattamento locale è necessario a fornirti il servizio che hai scelto di installare (art. 6.1.b GDPR). Nessun dato arriva ai nostri server: non abbiamo server che ricevono dati dall'Estensione.</p>
+      <p class="callout" data-l="en">Legal basis: local processing is necessary to provide the service you chose to install (Art. 6(1)(b) GDPR). No data reaches our servers: we have no servers receiving data from the Extension.</p>
+    </section>
+
+    <section id="s3">
+      <h2><span data-l="it">3. Permessi richiesti e perché</span><span data-l="en">3. Permissions and why</span></h2>
+      <div class="tbl"><table>
+        <thead><tr><th data-l="it">Permesso</th><th data-l="en">Permission</th><th data-l="it">A cosa serve</th><th data-l="en">What it is for</th></tr></thead>
+        <tbody>
+          <tr><td><code>declarativeNetRequest</code></td><td><span data-l="it">Bloccare pubblicità, tracker, malware e phishing con le liste filtri.</span><span data-l="en">Block ads, trackers, malware and phishing with filter lists.</span></td></tr>
+          <tr><td><code>&lt;all_urls&gt;</code></td><td><span data-l="it">Un ad blocker deve funzionare su tutti i siti. Nessun contenuto viene raccolto.</span><span data-l="en">An ad blocker must work on every site. No content is collected.</span></td></tr>
+          <tr><td><code>scripting</code></td><td><span data-l="it">Nascondere i riquadri pubblicitari e attivare i moduli YouTube ed email.</span><span data-l="en">Hide ad boxes and enable the YouTube and email modules.</span></td></tr>
+          <tr><td><code>storage</code>, <code>unlimitedStorage</code></td><td><span data-l="it">Salvare impostazioni e liste aggiornate dei siti malevoli.</span><span data-l="en">Store settings and updated malicious-site lists.</span></td></tr>
+          <tr><td><code>tabs</code>, <code>activeTab</code></td><td><span data-l="it">Mostrare nel popup lo stato del sito aperto e gli elementi bloccati.</span><span data-l="en">Show the open site's status and blocked items in the popup.</span></td></tr>
+          <tr><td><code>webNavigation</code></td><td><span data-l="it">Mostrare l'avviso prima di aprire un sito pericoloso.</span><span data-l="en">Show a warning before opening a dangerous site.</span></td></tr>
+          <tr><td><code>downloads</code>, <code>notifications</code></td><td><span data-l="it">Fermare i download pericolosi e chiederti conferma per i programmi.</span><span data-l="en">Stop dangerous downloads and ask before downloading programs.</span></td></tr>
+          <tr><td><code>alarms</code></td><td><span data-l="it">Aggiornare le liste antivirus ogni 12 ore.</span><span data-l="en">Update the antivirus lists every 12 hours.</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="s4">
+      <h2><span data-l="it">4. Connessioni di rete</span><span data-l="en">4. Network connections</span></h2>
+      <p data-l="it">L'unica connessione che l'Estensione fa di sua iniziativa è il download, ogni 12 ore, delle liste pubbliche di siti malevoli da <code>raw.githubusercontent.com</code> (GitHub). La richiesta non contiene dati personali: come per qualsiasi sito web, GitHub riceve tecnicamente l'indirizzo IP del tuo dispositivo, secondo la sua <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">informativa sulla privacy</a>. Puoi disattivare il modulo "Antivirus web" per evitare anche questa connessione.</p>
+      <p data-l="en">The only connection the Extension makes on its own is a download, every 12 hours, of public malicious-site lists from <code>raw.githubusercontent.com</code> (GitHub). The request contains no personal data: as with any website, GitHub technically receives your device's IP address, under its <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">privacy statement</a>. You can turn off the "Web antivirus" module to avoid this connection too.</p>
+    </section>
+
+    <section id="s5">
+      <h2><span data-l="it">5. Terze parti</span><span data-l="en">5. Third parties</span></h2>
+      <p data-l="it">Nessun dato viene venduto, ceduto o condiviso con terze parti. L'Estensione non contiene pubblicità, strumenti di analisi o sistemi di tracciamento. Non usiamo i dati per finalità diverse dal blocco dei contenuti né per valutazioni di credito.</p>
+      <p data-l="en">No data is sold, transferred or shared with third parties. The Extension contains no ads, analytics or tracking. Data is not used for any purpose other than content blocking, nor for creditworthiness or lending.</p>
+    </section>
+
+    <section id="s6">
+      <h2><span data-l="it">6. Conservazione</span><span data-l="en">6. Retention</span></h2>
+      <p data-l="it">Impostazioni e statistiche restano nel tuo browser finché non le modifichi o non disinstalli l'Estensione: in quel momento Chrome le cancella automaticamente. Le autorizzazioni "procedi comunque" per i siti bloccati durano solo fino alla chiusura del browser.</p>
+      <p data-l="en">Settings and statistics stay in your browser until you change them or uninstall the Extension, at which point Chrome deletes them automatically. "Proceed anyway" permissions for blocked sites last only until the browser is closed.</p>
+    </section>
+
+    <section id="s7">
+      <h2><span data-l="it">7. I tuoi diritti</span><span data-l="en">7. Your rights</span></h2>
+      <p data-l="it">Hai i diritti previsti dagli artt. 15–22 del GDPR (accesso, rettifica, cancellazione, limitazione, portabilità, opposizione) e puoi presentare reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" rel="noopener">garanteprivacy.it</a>). Poiché non conserviamo alcun dato su di te, puoi esercitare direttamente la cancellazione disinstallando l'Estensione o azzerando le impostazioni.</p>
+      <p data-l="en">You have the rights set out in Articles 15–22 GDPR (access, rectification, erasure, restriction, portability, objection) and may lodge a complaint with your data protection authority. Since we hold no data about you, you can erase everything yourself by uninstalling the Extension or resetting its settings.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span data-l="it">8. Minori</span><span data-l="en">8. Children</span></h2>
+      <p data-l="it">L'Estensione non raccoglie dati di alcun utente, compresi i minori.</p>
+      <p data-l="en">The Extension does not collect data from any user, including children.</p>
+    </section>
+
+    <section id="s9">
+      <h2><span data-l="it">9. Modifiche</span><span data-l="en">9. Changes</span></h2>
+      <p data-l="it">Eventuali modifiche a questa informativa saranno pubblicate su questa pagina con la nuova data di aggiornamento.</p>
+      <p data-l="en">Any changes to this policy will be published on this page with a new "last updated" date.</p>
+    </section>
+
+    <section id="s10">
+      <h2><span data-l="it">10. Contatti</span><span data-l="en">10. Contact</span></h2>
+      <p data-l="it">Per qualsiasi domanda su privacy e funzionamento: Doctor Computer &amp; Software – <a href="https://assistenza-consulenza-informatica.eu">assistenza-consulenza-informatica.eu</a></p>
+      <p data-l="en">For any question about privacy or how the Extension works: Doctor Computer &amp; Software – <a href="https://assistenza-consulenza-informatica.eu">assistenza-consulenza-informatica.eu</a></p>
+    </section>
+  </article>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Doctor Computer &amp; Software</span>
+    <a href="index.html">HyperNova Ad Blocker</a>
+  </div>
+</footer>
+
+<script>
+  function setLang(l) {
+    document.documentElement.lang = l;
+    document.title = l === 'en' ? 'Privacy Policy – HyperNova Ad Blocker' : 'Informativa sulla privacy – HyperNova Ad Blocker';
+    document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
+    try { localStorage.setItem('hn-lang', l); } catch (e) {}
+  }
+  document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+  let saved = null;
+  try { saved = localStorage.getItem('hn-lang'); } catch (e) {}
+  const q = new URLSearchParams(location.search).get('lang');
+  setLang(q || saved || ((navigator.language || 'it').startsWith('it') ? 'it' : 'en'));
+</script>
+</body>
+</html>
