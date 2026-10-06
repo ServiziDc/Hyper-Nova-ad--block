@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://servizidc.github.io/Hyper-Nova-ad--block/sitemap.xml

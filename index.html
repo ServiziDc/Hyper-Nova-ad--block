@@ -5,10 +5,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HyperNova Ad Blocker – Blocca pubblicità, YouTube, virus e phishing</title>
 <meta name="description" content="HyperNova Ad Blocker: estensione gratuita per Google Chrome che blocca pubblicità, annunci YouTube, tracker, siti di malware e phishing. Gratis sul Chrome Web Store.">
-<meta property="og:title" content="HyperNova Ad Blocker">
+<link rel="canonical" href="https://servizidc.github.io/Hyper-Nova-ad--block/">
+<meta name="theme-color" content="#070b18">
+<meta name="author" content="Doctor Computer &amp; Software">
+<!-- Open Graph e Twitter richiedono URL ASSOLUTI: con "assets/1-panoramica.jpg"
+     l'anteprima su WhatsApp, Facebook, Telegram e LinkedIn restava senza immagine. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HyperNova Ad Blocker">
+<meta property="og:locale" content="it_IT">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://servizidc.github.io/Hyper-Nova-ad--block/">
+<meta property="og:title" content="HyperNova Ad Blocker – Blocca pubblicità, YouTube, virus e phishing">
 <meta property="og:description" content="Blocca pubblicità, annunci YouTube, tracker, malware e phishing. Gratis per Google Chrome.">
-<meta property="og:image" content="assets/1-panoramica.jpg">
+<meta property="og:image" content="https://servizidc.github.io/Hyper-Nova-ad--block/assets/1-panoramica.jpg">
+<meta property="og:image:alt" content="Il popup di HyperNova Ad Blocker con le protezioni attive">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HyperNova Ad Blocker">
+<meta name="twitter:description" content="Blocca pubblicità, annunci YouTube, tracker, malware e phishing. Gratis per Google Chrome.">
+<meta name="twitter:image" content="https://servizidc.github.io/Hyper-Nova-ad--block/assets/1-panoramica.jpg">
 <link rel="icon" href="assets/favicon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "HyperNova Ad Blocker",
+  "applicationCategory": "BrowserApplication",
+  "operatingSystem": "Chrome, Edge, Brave, Opera, Vivaldi",
+  "description": "Estensione gratuita per Google Chrome che blocca pubblicità, annunci YouTube, tracker, siti di malware e phishing.",
+  "url": "https://servizidc.github.io/Hyper-Nova-ad--block/",
+  "downloadUrl": "https://chromewebstore.google.com/detail/hypernova-ad-blocker/knbhdpclojcmacoiilihmpheijdkjfih",
+  "installUrl": "https://chromewebstore.google.com/detail/hypernova-ad-blocker/knbhdpclojcmacoiilihmpheijdkjfih",
+  "softwareVersion": "1.1.0",
+  "inLanguage": ["it", "en", "es", "fr", "de", "pt"],
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "author": {
+    "@type": "Organization",
+    "name": "Doctor Computer & Software",
+    "url": "https://gama-informatica.com/"
+  },
+  "privacyPolicy": "https://servizidc.github.io/Hyper-Nova-ad--block/privacy.html"
+}
+</script>
 <style>
   :root {
     --bg: #070b18; --bg2: #0d1428; --panel: #111a33; --line: #22305a; --text: #e8edf8; --muted: #9aa6c6;
@@ -120,7 +158,15 @@
     .shieldimg { width: 210px; top: 70px; } .popupimg { width: 230px; }
     .grid { grid-template-columns: 1fr 1fr; }
     .steps, .steps.three { grid-template-columns: 1fr; row-gap: 28px; max-width: 560px; }
-    .links a { display: none; }
+    /* Prima qui c'era "display:none" su tutti i link: sotto i 900px la
+       navigazione (Funzioni, Installazione, FAQ) spariva del tutto e non
+       c'era nessun menu a sostituirla. Ora si stringono e restano. */
+    .links { gap: 14px; }
+    .links a { font-size: 14px; }
+  }
+  @media (max-width: 480px) {
+    .links a[href="#faq"] { display: none; }
+    .links { gap: 10px; }
   }
   @media (max-width: 600px) {
     body { font-size: 16px; }
@@ -164,8 +210,8 @@
     </div>
     <div class="visual">
       <div class="glow"></div>
-      <img class="shieldimg" src="assets/logo.png" alt="HyperNova Ad Blocker">
-      <img class="popupimg" src="assets/popup.png" alt="Popup HyperNova Ad Blocker">
+      <img class="shieldimg" src="assets/logo.png" alt="HyperNova Ad Blocker" width="300" height="300" fetchpriority="high">
+      <img class="popupimg" src="assets/popup.png" alt="Popup HyperNova Ad Blocker" width="280" height="430" decoding="async">
       <div class="chip c1">🚫 <b>Ads blocked</b></div>
       <div class="chip c2">🛡️ <b>Phishing stopped</b></div>
       <div class="chip c3">▶️ <b>YouTube ads skipped</b></div>
@@ -197,12 +243,14 @@
       <div class="card"><div class="ic">🚫</div><h3 data-t="f1t">Blocco pubblicità</h3><p data-t="f1d">Liste open source AdGuard Base ed EasyList, le stesse dei più famosi ad blocker.</p></div>
       <div class="card"><div class="ic">▶️</div><h3 data-t="f2t">Pubblicità YouTube</h3><p data-t="f2d">Rimuove gli annunci dal player, salta quelli rimasti e nasconde i box sponsorizzati.</p></div>
       <div class="card"><div class="ic">🕵️</div><h3 data-t="f3t">Anti-rilevamento</h3><p data-t="f3d">I siti non riescono a capire che stai bloccando la pubblicità.</p></div>
-      <div class="card"><div class="ic">🛡️</div><h3 data-t="f4t">Antivirus web</h3><p data-t="f4d">Blocca siti di malware, phishing e truffe con un avviso chiaro. Liste aggiornate ogni 12 ore.</p></div>
+      <div class="card"><div class="ic">🛡️</div><h3 data-t="f4t">Antivirus web</h3><p data-t="f4d">Blocca siti di malware, phishing e truffe con un avviso chiaro, con una pagina che spiega cosa è stato fermato.</p></div>
       <div class="card"><div class="ic">📥</div><h3 data-t="f5t">Download sicuri</h3><p data-t="f5d">Ferma i file con doppia estensione (fattura.pdf.exe) e chiede conferma per i programmi.</p></div>
       <div class="card"><div class="ic">✉️</div><h3 data-t="f6t">Protezione email</h3><p data-t="f6d">In Gmail, Outlook, Libero e Yahoo segnala link falsi, allegati pericolosi e pixel spia.</p></div>
       <div class="card"><div class="ic">👁️</div><h3 data-t="f7t">Anti-tracker</h3><p data-t="f7d">Blocca i sistemi che ti seguono da un sito all'altro (AdGuard Tracking + EasyPrivacy).</p></div>
       <div class="card"><div class="ic">🌍</div><h3 data-t="f8t">Filtri internazionali</h3><p data-t="f8d">Liste dedicate ai siti di Italia, Europa, Russia, Asia, America Latina e altri paesi.</p></div>
       <div class="card"><div class="ic">🍪</div><h3 data-t="f9t">Cookie e popup</h3><p data-t="f9d">Opzionale: nasconde banner dei cookie, finestre fastidiose e widget social.</p></div>
+      <div class="card"><div class="ic">🔄</div><h3 data-t="f10t">Liste sempre aggiornate</h3><p data-t="f10d">Tutte le liste si aggiornano da sole in background, senza aspettare una nuova versione dell'estensione.</p></div>
+      <div class="card"><div class="ic">✏️</div><h3 data-t="f11t">Filtri tuoi</h3><p data-t="f11d">Puoi aggiungere i domini che vuoi bloccare, e segnalare un sito che non funziona con un clic.</p></div>
     </div>
   </div>
 </section>
@@ -240,9 +288,9 @@
   <div class="wrap">
     <h2>FAQ</h2>
     <details><summary data-t="q1">È davvero gratis?</summary><p data-t="a1">Sì, completamente gratuita, senza account, senza pubblicità e senza abbonamenti.</p></details>
-    <details><summary data-t="q2">Raccoglie i miei dati?</summary><p data-t="a2">No. Tutto funziona sul tuo computer: nessun dato viene inviato. Leggi l'informativa sulla privacy.</p></details>
+    <details><summary data-t="q2">Raccoglie i miei dati?</summary><p><span data-t="a2">No. Tutto funziona sul tuo computer: nessun dato viene inviato.</span> <a href="privacy.html" data-t="a2link">Leggi l'informativa sulla privacy</a>.</p></details>
     <details><summary data-t="q3">Sostituisce l'antivirus?</summary><p data-t="a3">No. Protegge la navigazione (siti, link, download) ma l'antivirus del PC resta necessario.</p></details>
-    <details><summary data-t="q4">Un sito non funziona bene, cosa faccio?</summary><p data-t="a4">Apri il popup e spegni "Protezione su questo sito": il sito viene escluso e la pagina si ricarica.</p></details>
+    <details><summary data-t="q4">Un sito non funziona bene, cosa faccio?</summary><p data-t="a4">Apri il popup e spegni "Protezione su questo sito": il sito viene escluso e la pagina si ricarica. Dallo stesso popup puoi anche segnalarmelo con un clic, così lo sistemo per tutti.</p></details>
     <details><summary data-t="q5">Posso cambiare lingua?</summary><p data-t="a5">Sì: italiano, inglese, spagnolo, francese, tedesco e portoghese, dal menu in alto nel popup.</p></details>
   </div>
 </section>
@@ -274,8 +322,11 @@
 <div class="toast" id="toast"></div>
 
 <script>
-  // Link al Chrome Web Store: incollalo qui quando l'estensione è pubblicata
-  const STORE_URL = '';
+  // Link al Chrome Web Store (estensione pubblicata il 29 settembre 2026).
+  // ATTENZIONE: se questa stringa è vuota i pulsanti "Aggiungi a Chrome" NON
+  // diventano link e mostrano solo l'avviso "in arrivo": è il motivo per cui
+  // il sito è rimasto senza link funzionante dalla pubblicazione.
+  const STORE_URL = 'https://chromewebstore.google.com/detail/hypernova-ad-blocker/knbhdpclojcmacoiilihmpheijdkjfih';
 
   const EN = {
     navFeatures: 'Features', navInstall: 'Install',
@@ -287,12 +338,14 @@
     f1t: 'Ad blocking', f1d: 'Open-source AdGuard Base and EasyList filter lists, the same used by the best-known ad blockers.',
     f2t: 'YouTube ads', f2d: 'Removes ads from the player, skips leftovers and hides sponsored boxes.',
     f3t: 'Anti-detection', f3d: 'Websites can\'t tell you are blocking ads.',
-    f4t: 'Web antivirus', f4d: 'Blocks malware, phishing and scam sites with a clear warning. Lists updated every 12 hours.',
+    f4t: 'Web antivirus', f4d: 'Blocks malware, phishing and scam sites with a clear warning page explaining what was stopped.',
     f5t: 'Safe downloads', f5d: 'Stops double-extension files (invoice.pdf.exe) and asks before downloading programs.',
     f6t: 'Email protection', f6d: 'In Gmail, Outlook and Yahoo it flags fake links, dangerous attachments and spy pixels.',
     f7t: 'Anti-tracker', f7d: 'Blocks systems that follow you from site to site (AdGuard Tracking + EasyPrivacy).',
     f8t: 'International filters', f8d: 'Dedicated lists for websites in Europe, Russia, Asia, Latin America and more.',
     f9t: 'Cookies & popups', f9d: 'Optional: hides cookie banners, annoying windows and social widgets.',
+    f10t: 'Always up-to-date lists', f10d: 'Every filter list updates itself in the background, with no need to wait for a new version of the extension.',
+    f11t: 'Your own filters', f11d: 'Add any domain you want blocked, and report a broken website in one click.',
     baTitle: 'See the difference instantly', baSub: 'Goodbye banners, fake virus alerts, scam popups and video ads. Only what you want to read is left.',
     gTitle: 'Take a look', gSub: 'Click the images to enlarge them.',
     iTitle: 'Install in 3 clicks', iSub: 'Install it from Google\'s official Chrome Web Store, safely and with automatic updates.',
@@ -301,9 +354,9 @@
     i3t: 'Pin the icon', i3d: 'Click the puzzle 🧩 next to the address bar and pin HyperNova. You are protected!',
     iNote: 'It also works on Microsoft Edge, Brave, Opera and Vivaldi: install it from the same Chrome Web Store page.',
     q1: 'Is it really free?', a1: 'Yes, completely free, no account, no ads, no subscriptions.',
-    q2: 'Does it collect my data?', a2: 'No. Everything runs on your computer: no data is sent. Read the privacy policy.',
+    q2: 'Does it collect my data?', a2: 'No. Everything runs on your computer: no data is sent.', a2link: 'Read the privacy policy',
     q3: 'Does it replace my antivirus?', a3: 'No. It protects your browsing (sites, links, downloads) but you still need an antivirus on your PC.',
-    q4: 'A website doesn\'t work properly, what should I do?', a4: 'Open the popup and turn off "Protection on this site": the site is excluded and the page reloads.',
+    q4: 'A website doesn\'t work properly, what should I do?', a4: 'Open the popup and turn off "Protection on this site": the site is excluded and the page reloads. From the same popup you can also report it in one click, so it gets fixed for everyone.',
     q5: 'Can I change the language?', a5: 'Yes: English, Italian, Spanish, French, German and Portuguese, from the menu at the top of the popup.',
     dTitle: 'Browse clean and safe', dSub: 'Add HyperNova Ad Blocker to Chrome and forget about ads and scam sites.',
     privacy: 'Privacy', lists: 'Filter lists: AdGuard, EasyList, malware-filter', copied: 'Copied!',
@@ -338,10 +391,23 @@
   // copia chrome://extensions (i link chrome:// non sono cliccabili dalle pagine web)
   function toastMsg(t) { toast.textContent = t; toast.classList.add('on'); setTimeout(() => toast.classList.remove('on'), 2200); }
 
-  // lightbox
+  // lightbox: apribile anche da tastiera e chiudibile con Esc
   const lb = document.getElementById('lb');
-  document.querySelectorAll('.gallery img').forEach(i => i.addEventListener('click', () => { lb.querySelector('img').src = i.src; lb.classList.add('on'); }));
-  lb.addEventListener('click', () => lb.classList.remove('on'));
+  const closeLb = () => { lb.classList.remove('on'); if (lb._opener) lb._opener.focus(); };
+  document.querySelectorAll('.gallery img').forEach(i => {
+    i.tabIndex = 0;
+    i.setAttribute('role', 'button');
+    const open = () => {
+      lb.querySelector('img').src = i.src;
+      lb.querySelector('img').alt = i.alt || '';
+      lb._opener = i;
+      lb.classList.add('on');
+    };
+    i.addEventListener('click', open);
+    i.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+  });
+  lb.addEventListener('click', closeLb);
+  addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('on')) closeLb(); });
 </script>
 </body>
 </html>
